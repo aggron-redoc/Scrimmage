@@ -1,0 +1,246 @@
+@font-face{
+	font-family: roundededges;
+	src: url("VarelaRound-Regular.ttf");
+	font-stretch:condensed;
+}
+
+@font-face{
+	font-family: titlename;
+	src: url("Quantico-Regular.ttf");
+}
+
+
+body
+{
+	background: black;
+}
+
+.root_container
+{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  bottom: 10px;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+div.appname h2{
+
+	font-family: titlename;
+	font-size: 300%;
+	position: relative;
+	left: 50px;
+}
+
+div.pichalf {
+	
+	float: right;
+	margin: 15% 0% 5% 5%;
+}
+
+.appname h3{
+	position: relative;
+	left: 35%;
+}
+
+div.pichalf img {
+
+	width: 100%;
+	height: 200%;
+}
+
+div.content {
+	font-family: roundededges;
+	float: left;
+	margin: -3% 0% 5% 5%;
+}
+
+div.appname img{
+
+	width: 19%;
+	height: 25%;
+	position: relative;
+	top: 50px;
+}
+
+ol
+{
+	position: relative;
+	left: 44%;
+	text-align: justify;
+	list-style-position: inside;
+}
+
+.wrapper{
+  position: relative;
+  top: 50px;
+  left: 200px;
+  transform: translate(-50%, -50%);
+}
+
+.link_wrapper{
+  position: relative;
+}
+
+.description{
+	font-family: roundededges;
+	font-style: italic;
+	position: relative;
+	left: 80px;
+	font-size: 20px;
+	line-height: 2.5;
+	word-spacing: 5px;
+	color: #B2B2B2;
+}
+
+.tagline
+{
+	position: relative;
+	top: -20px;
+}
+
+a{
+  display: block;
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #333;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 3px solid #333;
+  transition: all .35s;
+  border-radius: 12px;
+}
+
+.icon{
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  position: absolute;
+  transform: rotate(45deg);
+  right: 50%;
+  top: 0;
+  z-index: -1;
+  transition: all .35s;
+}
+
+.icon svg{
+  width: 30px;
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  transform: rotate(-45deg);
+  fill: #2ecc71;
+  transition: all .35s;
+}
+
+a:hover{
+  width: 200px;
+  border: 3px solid #2ecc71;
+  background: transparent;
+  color: #2ecc71;
+}
+
+a:hover + .icon{
+  border: 3px solid #2ecc71;
+  right: 7.5%;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+
+.powby
+{
+	position: relative;
+	top: 80px;
+	left: 400px;
+
+}
+
+.codeforces{
+
+	height: 3%;
+	width: 12.5%;
+	position: relative;
+	left: 30%;
+}
+
+.codeforces:hover{
+
+	height: 3%;
+	width: 12.5%;
+
+}
+
+.cflink{
+	position: relative;
+	top: 5px;
+
+}
+
+.IntoTheRoom{
+	position: fixed;
+    	left: 50%;
+	top: 50%;
+    	transform: translate(-50%, -50%);
+	font-family: titlename;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 25px;
+	padding: 5%;
+	width: 30%;
+}
+
+input
+{
+	border-radius: 15px;
+	height: 50px;
+	width: 125%;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%,0%);
+	font-family: titlename;
+}
+
+.IntoTheRoom h3{
+	position: relative;
+	transform: translate(0%,-35px);
+	font-size: 150%;
+}
+
+
+.username{
+	position: relative;
+	transform: translate(-50%,-25px);
+}
+
+.intocontest{
+	
+	position: relative;
+	transform: translate(-50%,25px);
+	width: 50%;
+	transition: all .35s;
+}
+
+.intocontest:hover{
+
+	background-color: black;
+	color: white;
+	cursor: pointer;
+}
