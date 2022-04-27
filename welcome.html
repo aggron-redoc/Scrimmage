@@ -1,49 +1,133 @@
 <!doctype html>
 <html>
 	<head>
-		<title>
-			Private CP competitions - Room menu
-		</title>
+		<meta charset="UTF-8">
+  		<meta name="description" content="Private CP competitions">
+  		<meta name="keywords" content="CP, Private, Codeforces, Scrimmage">
+  		<meta name="author" content="aggron2002">
 		<link rel="stylesheet" href="main_css.css">
-		<base target="_top">
+		<title>
+			Scrimmage - IntoTheRoom
+		</title>
 	</head>
+	<style>
+		.IntoTheRoom{
+			transition:visibility 0.4s, opacity 0.4s;
+            	visibility:hidden; opacity:0;
+				}
+		.content, .pichalf {
+				filter: blur(0px);
+				transition: filter 0.05s;
+			  }
+	    .description{
+			line-height: 1.5;
+			font-family: forcode;
+			font-style: normal;
+		}
+		.wrapper{
+			font-size: 80%;
+			font-family: forcode;
+		}
+		a:hover + .icon {
+			right: 4.5%;
+		}
+		.room_link img{
+			position: relative;
+			float:right;
+			height: 40%;
+			width: 40%;
+			left: 12%;
+			transition: all 0.35s;
+		}
+		.room_link img:hover{
+			filter: drop-shadow(2.5px 2.5px 5px black);
+		}
+		.room_link{
+			background-color: #f5f5f5;
+			height: 40px;
+			width: 60%;
+			position: relative;
+			top: -45px;
+			left: 25%;
+			transform: translate(-10%,0%);
+			border-radius: 10px;
+		}
+		.room_link h4{
+			padding: 5% 0% 0% 0%;
+		}
+	</style>
 	<body>
-		<div class="titlebar">
-			<h1 align="center"> Exclusive Bout </h1>
-			<h3 align="right">
-				Welcome! Level up at your own comfort and have fun with your friends!
-			</h3>
+		<div class="root_container">
+			<div class="pichalf" align="right">
+				<img src="background_side.png">
+			</div>
+			<div class="IntoTheRoom">
+				<h3 class="heading" align="center">Room Lead Details</h3>
+				<form class="pgateway" action="welcome.html">
+					<input class="username" type="text" placeholder="Username">
+					<br>
+					<input class="cfid" type="text" placeholder="Codeforces ID">
+					<br>
+					<input class="intocontest" type="submit" value="Start">
+				</form>
+			</div>
+			<div class="content">
+				<div class="appname">
+					<img align="left" src="pageicon.svg">
+					<h2 align="left"> Scrimmage </h2>
+					<h3 align="right" class="tagline"><i> - Level Up with your friends!  </i></h3>
+				</div>
+				<br>
+				<div class="room_link">
+					<img src="copy_image.svg" onclick="copytoclipboard()">
+					<h4 align="center"> 127.0.0.1/8000 </h4>
+				</div>
+				<pre class="description">
+welcome();
+while(inroom)
+{
+  think();
+  code();
+  debug();
+}</pre>
+				<div class="wrapper">
+  					<div class="link_wrapper">
+    						<a href="#" onclick="createroom()">Contest(time,problems)</a>
+    						<div class="icon">
+      						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+        							<path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
+      						</svg>
+    						</div>
+  					</div>
+
+				</div>
+				<div class="powby">
+					<h3>Powered by</h3>
+					<a class="codeforces" href="https://codeforces.com/"><img class="cflink" src="code-forces.svg"></a>
+				</div>
+			</div>
 		</div>
-		<h2 align="center">
-			Welcome to your Private room!
-		</h2>
-		<p align="center"> To invite your friends, share this url to them: <i> <a href="welcome.html"> Room Link </a> </i>
-		<h3> Current Participants: </h3>
-		<ul>
-			<li> X </li>
-			<li> Y </li>
-		</ul>
-		<form action="choose_problems.html">
-			<fieldset>
-			<legend> Contest details</legend>
-			<label for="duration">Duration (in mins): </label>
-			<input type="number" id="duration" name="duration">
-			<br>
-			<br>
-			<label for="nofproblems">No. of Problems: </label>
-			<input type="number" id="nofproblems" name="nofproblems">
-			<br>
-			<br>
-			<input type="submit" value="set">
-			</fieldset>
-		</form>
-		<iframe src="choose_problems.html" height="300" width="500" title="Choose Problems.html"></iframe>
-		<br>
-		<br>
-		<br>
-		<div class="Powered_by" align="right">
-			<h6> powered by </h6>
-			<a href="https://codeforces.com/apiHelp"><img src="codeforces_api.jpg" style="border-radius: 6px;height: 200px;width: 500px"></a>
-		</div>
+		<script>
+			function createroom()
+			{
+				document.getElementsByClassName('content')[0].style.filter="blur(4px)";
+				document.getElementsByClassName('pichalf')[0].style.filter="blur(6px)";
+				document.getElementsByClassName('content')[0].style.pointerEvents="none";
+				document.getElementsByClassName('IntoTheRoom')[0].style.visibility="visible";
+				document.getElementsByClassName('IntoTheRoom')[0].style.opacity="1";
+			}
+			document.addEventListener('mouseup', function(e) {
+   						 	var container = document.getElementsByClassName('IntoTheRoom')[0];
+							var container2 = document.getElementsByClassName('content')[0];
+							var container3 = document.getElementsByClassName('pichalf')[0];
+    							if (!container.contains(e.target)) {
+        								container.style.visibility = 'hidden';
+									container.style.opacity = '0';
+									container2.style.filter="blur(0px)";
+									container2.style.pointerEvents="all";
+									container3.style.filter="blur(0px)";
+    							}
+			});
+		</script>
 	</body>
-</html> 
+</html>
