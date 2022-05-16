@@ -1,32 +1,35 @@
 <html>
 	<head>
 		<title>
-			Private CP Competitions - leaderboard
+			Scrimmage - leaderboard
 		</title>
 		<link rel="stylesheet" href="main_css.css">
+		<style>
+			table
+			{
+				border-spacing: 3rem;
+			}
+			th
+			{
+				padding: 1rem;
+			}
+			td
+			{
+				padding: 0.5rem;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="titlebar">
-			<h1 align="center"> Exclusive Bout </h1>
-			<h3 align="right">
-				Welcome! Level up at your own comfort and have fun with your friends!
-			</h3>
-		</div>
-		<h2 align="center">Leaderboard</h2>
-		<table border="1" align="center">
-			<tr>
-				<th> Rank </th>
-				<th> Username </th>
-				<th> No. of problems </th>
-				<th> Time Taken </th>
-			</tr>
-		</table>
-		<br>
-		<br>
-		<br>
-		<div class="Powered_by" align="right">
-			<h6> powered by </h6>
-			<a href="https://codeforces.com/apiHelp"><img src="codeforces_api.jpg" style="border-radius: 6px;height: 200px;width: 500px"></a>
+		<div class="root_container" style="font-family: titlename;">
+			<h2 align="center">Leaderboard</h2>
+			<table border="1" align="center" style="border-collapse: collapse;">
+				<tr>
+					<th> Rank </th>
+					<th> Username </th>
+					<th> Codeforces ID </th>
+					<th> No. of Problems </th>
+				</tr>
+			</table>
 		</div>
 	</body>
 </html>
