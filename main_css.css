@@ -74,9 +74,9 @@ div.appname img{
 ol
 {
 	position: relative;
-	left: 44%;
 	text-align: justify;
 	list-style-position: inside;
+	font-family: roundededges;
 }
 
 .wrapper{
@@ -209,6 +209,10 @@ a:hover + .icon{
 	border-radius: 25px;
 	padding: 5%;
 	width: 30%;
+}
+
+.IntoTheRoom input{
+	padding-left: 1%;
 }
 
 input

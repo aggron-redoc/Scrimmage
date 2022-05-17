@@ -11,14 +11,16 @@
 		</title>
 	</head>
 	<style>
-		.IntoTheRoom{
-			transition:visibility 0.4s, opacity 0.4s;
-            	visibility:hidden; opacity:0;
-				}
-		.content, .pichalf {
-				filter: blur(0px);
-				transition: filter 0.05s;
-			  }
+	.IntoTheRoom{
+		transition:visibility 0.25s, opacity 0.25s;
+			visibility:hidden; opacity:0;
+			transition-timing-function: linear;
+			}
+	.content, .pichalf {
+			filter: blur(0px);
+			transition: all 0.05s;
+			transition-timing-function: linear;
+		  }
 	    .description{
 			line-height: 1.5;
 			font-family: forcode;
@@ -84,10 +86,28 @@
 			border-radius: 0px;
 			pointer-events: none;
 		}
+		#ParticipantListButton{
+			transition: all 0.35s;
+			cursor: pointer;
+		}
+		#ParticipantListButton:hover{
+			transform: scale(-1,1.1);
+		}
+		#ParticipantListView{
+			position: absolute;
+			left: 77.5%;
+			min-height: 25rem;
+		}
+		ol{
+			top: -2rem;
+			line-height: 2.5;
+			max-height: 25rem;
+			overflow-y: scroll;
+		}
 	</style>
 	<body>
 		<div class="root_container">
-			<div class="pichalf" align="right">
+			<div class="pichalf" id="ParticipantListButton" align="right" onclick="ViewParticipantList()">
 				<img src="background_side.png">
 			</div>
 			<div class="IntoTheRoom">
@@ -99,6 +119,13 @@
 					<br>
 					<input class="intocontest" type="submit" value="Start">
 				</form>
+			</div>
+			<div class="IntoTheRoom" id='ParticipantListView'>
+				<h3 class="heading" align="center">Participant List</h3>
+				<ol>
+					<li> Aggronfdgdfgfdgfdgfdgdf </li>
+					<li> Aron </li>
+				</ol>
 			</div>
 			<div class="content">
 				<div class="appname">
@@ -143,6 +170,7 @@ while(inroom)
 				document.getElementsByClassName('content')[0].style.filter="blur(4px)";
 				document.getElementsByClassName('pichalf')[0].style.filter="blur(6px)";
 				document.getElementsByClassName('content')[0].style.pointerEvents="none";
+				document.getElementsByClassName('pichalf')[0].style.pointerEvents="none";
 				document.getElementsByClassName('IntoTheRoom')[0].style.visibility="visible";
 				document.getElementsByClassName('IntoTheRoom')[0].style.opacity="1";
 			}
@@ -155,6 +183,7 @@ while(inroom)
 									container.style.opacity = '0';
 									container2.style.filter="blur(0px)";
 									container2.style.pointerEvents="all";
+									container3.style.pointerEvents="all";
 									container3.style.filter="blur(0px)";
     							}
 			});
@@ -169,6 +198,28 @@ while(inroom)
 				  navigator.clipboard.writeText(copyText.value);
 				 document.getElementsByClassName('tooltiptext')[0].innerHTML="Copied to clipboard";
 			  }
+			  function ViewParticipantList()
+			  {
+				document.getElementsByClassName('pichalf')[0].style.visibility="hidden";
+  				document.getElementsByClassName('pichalf')[0].style.filter="blur(6px)";
+  				document.getElementsByClassName('content')[0].style.pointerEvents="none";
+  				document.getElementsByClassName('IntoTheRoom')[1].style.visibility="visible";
+  				document.getElementsByClassName('IntoTheRoom')[1].style.opacity="1";
+			  }
+			  document.addEventListener('mouseup', function(e) {
+     						 	var container = document.getElementsByClassName('IntoTheRoom')[1];
+  							var container2 = document.getElementsByClassName('content')[0];
+  							var container3 = document.getElementsByClassName('pichalf')[0];
+      							if (!container.contains(e.target) && container.style.visibility=='visible') {
+          							container.style.visibility = 'hidden';
+  									container.style.opacity = '0';
+  									container2.style.filter="blur(0px)";
+  									container2.style.pointerEvents="all";
+									container3.style.pointerEvents="all";
+  									container3.style.filter="blur(0px)";
+									container3.style.visibility="visible";
+      							}
+  			});
 		</script>
 	</body>
 </html>
