@@ -25,17 +25,21 @@
 	<body>
 		<div class="root_container">
 			<div class="pichalf" align="right">
-				<img src="background_side.png">
+				<img src="background_side.png" usemap='#image-map'>
+				<map name="image-map">
+    				<area target="" alt="" title="" href="#description" coords="336,175,38" shape="circle">
+				</map>
 			</div>
 			<div class="IntoTheRoom">
 				<h3 class="heading" align="center">Room Lead Details</h3>
-				<form class="pgateway" action="welcome.html">
+				<form class="pgateway" action="welcome.html" onsubmit="validatecfid(this);return false;">
 					<input class="username" type="text" placeholder="Username">
 					<br>
-					<input class="cfid" type="text" placeholder="Codeforces ID">
+					<input class="cfid" type="text" placeholder="Codeforces ID" onfocus="document.getElementById('validation_message').className='invisible'">
 					<br>
 					<input class="intocontest" type="submit" value="Start">
 				</form>
+				<p id='validation_message' class='invisible'><i>*Codeforces ID not found</i></p>
 			</div>
 			<div class="content">
 				<div class="appname">
@@ -44,7 +48,7 @@
 					<h3 align="right" class="tagline"><i> - Level Up with your friends!  </i></h3>
 				</div>
 				<br>
-				<pre class="description">
+				<pre class="description" name='description'>
 Create your own unofficial
 contest and Compete with
 your friends at your
@@ -87,6 +91,28 @@ own comfort!</pre>
 									container3.style.filter="blur(0px)";
     							}
 			});
+		</script>
+		<script>
+			async function getUser(val)
+			{
+				let url = 'https://codeforces.com/api/user.info?handles='+val;
+				try {
+						let res = await fetch(url);
+						return await res.json();
+					} catch (error) {
+							console.log('hello');
+									}
+			}
+			async function validatecfid(element)
+			{
+				cfidelement=document.getElementsByClassName('cfid')[0];
+				val=cfidelement.value;
+				result=await getUser(val);
+				if(result["status"]=='OK')
+					element.submit();
+				else
+					document.getElementById('validation_message').className='visible';
+			}
 		</script>
 	</body>
 </html>

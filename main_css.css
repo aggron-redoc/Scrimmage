@@ -252,3 +252,15 @@ input
 	color: white;
 	cursor: pointer;
 }
+.invisible{
+	visibility: hidden;
+}
+.visible{
+	visibility: visible;
+}
+#validation_message{
+	color: coral;
+	position: relative;
+	top: -4rem;
+	left: -4rem;
+}

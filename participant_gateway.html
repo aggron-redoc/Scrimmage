@@ -29,13 +29,14 @@
 			</div>
 			<div class="IntoTheRoom">
 				<h3 class="heading" align="center">Participant Gateway</h3>
-				<form class="pgateway" action="welcome.html">
+				<form class="pgateway" action="welcome.html" onsubmit="validatecfid(this);return false;">
 					<input class="username" type="text" placeholder="Username">
 					<br>
-					<input class="cfid" type="text" placeholder="Codeforces ID">
+					<input class="cfid" type="text" placeholder="Codeforces ID" onfocus="document.getElementById('validation_message').className='invisible'">
 					<br>
 					<input class="intocontest" type="submit" value="Start">
 				</form>
+				<p id='validation_message' class='invisible'><i>*Codeforces ID not found</i></p>
 			</div>
 			<div class="content">
 				<div class="appname">
@@ -66,5 +67,27 @@ own comfort!</pre>
 				</div>
 			</div>
 		</div>
+		<script>
+			async function getUser(val)
+			{
+				let url = 'https://codeforces.com/api/user.info?handles='+val;
+				try {
+						let res = await fetch(url);
+						return await res.json();
+					} catch (error) {
+							console.log('hello');
+									}
+			}
+			async function validatecfid(element)
+			{
+				cfidelement=document.getElementsByClassName('cfid')[0];
+				val=cfidelement.value;
+				result=await getUser(val);
+				if(result["status"]=='OK')
+					element.submit();
+				else
+					document.getElementById('validation_message').className='visible';
+			}
+		</script>
 	</body>
 </html>
