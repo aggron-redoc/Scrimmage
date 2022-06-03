@@ -1,17 +1,17 @@
 @font-face{
 	font-family: roundededges;
-	src: url("VarelaRound-Regular.ttf");
+	src: url("./Fonts/VarelaRound-Regular.ttf");
 	font-stretch:condensed;
 }
 
 @font-face{
 	font-family: titlename;
-	src: url("Quantico-Regular.ttf");
+	src: url("./Fonts/Quantico-Regular.ttf");
 }
 
 @font-face{
 	font-family: forcode;
-	src: url("Monaco.ttf");
+	src: url("./Fonts/Monaco.ttf");
 }
 
 body
