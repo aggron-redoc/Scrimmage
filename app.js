@@ -11,5 +11,13 @@ app.config(function($routeProvider)
 	.when("/:roomLead/:participant",{
 		templateUrl: "./Resources/welcome.html"
 	})
-	.when("/:roomLead")
-})
+	.when("/:roomLead/:participant/contest",{
+		templateUrl: "./Resources/start_contest.html"
+	})
+	.when("/:roomLead/:participant/contest/leaderboard",{
+		templateUrl: "./Resources/leaderboard.html"
+	})
+	.otherwise({
+        redirectTo: '/'
+    });
+});
