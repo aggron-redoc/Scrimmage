@@ -5,23 +5,22 @@
   		<meta name="description" content="Private CP competitions">
   		<meta name="keywords" content="CP, Private, Codeforces, Scrimmage">
   		<meta name="author" content="aggron2002">
-		<link rel="stylesheet" href="./Resources/main_css.css">
 		<title>
 			Scrimmage - home
 		</title>
+		<style>
+			.IntoTheRoom{
+				transition:visibility 0.25s, opacity 0.25s;
+	            	visibility:hidden; opacity:0;
+					transition-timing-function: linear;
+					}
+			.content, .pichalf {
+					filter: blur(0px);
+					transition: filter 0.05s;
+					transition-timing-function: linear;
+				  }
+		</style>
 	</head>
-	<style>
-		.IntoTheRoom{
-			transition:visibility 0.25s, opacity 0.25s;
-            	visibility:hidden; opacity:0;
-				transition-timing-function: linear;
-				}
-		.content, .pichalf {
-				filter: blur(0px);
-				transition: filter 0.05s;
-				transition-timing-function: linear;
-			  }
-	</style>
 	<body>
 		<div class="root_container">
 			<div class="pichalf" align="right">
@@ -55,7 +54,7 @@ your friends at your
 own comfort!</pre>
 				<div class="wrapper">
   					<div class="link_wrapper">
-    						<a href="#" onclick="createroom()">Create a Room!</a>
+    						<a onclick="createroom()">Create a Room!</a>
     						<div class="icon">
       						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
         							<path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
@@ -70,7 +69,7 @@ own comfort!</pre>
 				</div>
 			</div>
 		</div>
-		<script>
+		<script type='text/javascript'>
 			function createroom()
 			{
 				document.getElementsByClassName('content')[0].style.filter="blur(4px)";
@@ -92,7 +91,7 @@ own comfort!</pre>
     							}
 			});
 		</script>
-		<script>
+		<script type='text/javascript'>
 			async function getUser(val)
 			{
 				let url = 'https://codeforces.com/api/user.info?handles='+val;
