@@ -11,7 +11,7 @@
 		<style>
 			.IntoTheRoom{
 				transition:visibility 0.25s, opacity 0.25s;
-	            	visibility:hidden; opacity:0;
+	            	visibility:hidden;opacity:0;
 					transition-timing-function: linear;
 					}
 			.content, .pichalf {
@@ -19,17 +19,28 @@
 					transition: filter 0.05s;
 					transition-timing-function: linear;
 				  }
+			.createRoomContent{
+				filter: blur(4px);
+				pointer-events: none;
+			}
+			.createRoomPicHalf{
+				filter: blur(6px);
+			}
+			.createRoomIntoTheRoom{
+				visibility: visible;
+				opacity: 1;
+			}
 		</style>
 	</head>
 	<body>
 		<div class="root_container">
-			<div class="pichalf" align="right">
+			<div class="pichalf" align="right" ng-class="{createRoomPicHalf:isOpen}">
 				<img src="./Resources/images/background_side.png" usemap='#image-map'>
 				<map name="image-map">
     				<area target="" alt="" title="" href="#description" coords="336,175,38" shape="circle">
 				</map>
 			</div>
-			<div class="IntoTheRoom">
+			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen}' on-outside-click='closeBox'>
 				<h3 class="heading" align="center">Room Lead Details</h3>
 				<form class="pgateway" action="welcome.html" onsubmit="validatecfid(this);return false;">
 					<input class="username" type="text" placeholder="Username">
@@ -40,7 +51,7 @@
 				</form>
 				<p id='validation_message' class='invisible'><i>*Codeforces ID not found</i></p>
 			</div>
-			<div class="content">
+			<div class="content" ng-class="{createRoomPicHalf:isOpen}">
 				<div class="appname">
 					<img align="left" src="./Resources/images/pageicon.svg">
 					<h2 align="left"> Scrimmage </h2>
@@ -54,7 +65,7 @@ your friends at your
 own comfort!</pre>
 				<div class="wrapper">
   					<div class="link_wrapper">
-    						<a onclick="createroom()">Create a Room!</a>
+    						<a ng-click='openBox'>Create a Room!</a>
     						<div class="icon">
       						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
         							<path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
@@ -69,28 +80,6 @@ own comfort!</pre>
 				</div>
 			</div>
 		</div>
-		<script type='text/javascript'>
-			function createroom()
-			{
-				document.getElementsByClassName('content')[0].style.filter="blur(4px)";
-				document.getElementsByClassName('pichalf')[0].style.filter="blur(6px)";
-				document.getElementsByClassName('content')[0].style.pointerEvents="none";
-				document.getElementsByClassName('IntoTheRoom')[0].style.visibility="visible";
-				document.getElementsByClassName('IntoTheRoom')[0].style.opacity="1";
-			}
-			document.addEventListener('mouseup', function(e) {
-   						 	var container = document.getElementsByClassName('IntoTheRoom')[0];
-							var container2 = document.getElementsByClassName('content')[0];
-							var container3 = document.getElementsByClassName('pichalf')[0];
-    							if (!container.contains(e.target)) {
-        								container.style.visibility = 'hidden';
-									container.style.opacity = '0';
-									container2.style.filter="blur(0px)";
-									container2.style.pointerEvents="all";
-									container3.style.filter="blur(0px)";
-    							}
-			});
-		</script>
 		<script type='text/javascript'>
 			async function getUser(val)
 			{
