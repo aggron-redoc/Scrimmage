@@ -1,9 +1,10 @@
-app=angular.module('navigator',['ngRoute']);
-app.config(function($routeProvider)
+angular.module('routeMaker',['ngRoute','pcpHome'])
+.config(function($routeProvider)
 {
 	$routeProvider
 	.when("/",{
-		templateUrl : "./Resources/pcp_home.htm"
+		templateUrl : "./Resources/pcp_home.htm",
+		controller  : "pcpHomeController"
 	})
 	.when("/:roomLead",{
 		templateUrl : "./Resources/participant_gateway.html"
