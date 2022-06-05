@@ -1,4 +1,4 @@
-angular.module('clickOutsideToClose',[])
+angular.module('clickOutsideToClose',['pcpHome'])
 .directive('onOutsideClick',function($document){
 	return{
 		restrict: 'A',
