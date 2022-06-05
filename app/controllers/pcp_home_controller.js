@@ -1,15 +1,17 @@
 angular.module('pcpHome',['dataRetrieval'])
-.controller('pcpHomeController',['customHttpService',function($scope, $window,customHttpService){
+.controller('pcpHomeController',function($scope, $window, customHttpService){
 	$scope.isOpen=false;
 	$scope.cfid='';
-	$scope.dialogVisibility=false;
-	$scope.dialogVisibilityToggler=function(){
-		$scope.dialogVisibility=!$scope.dialogVisibility;
+	$scope.resultToggler=function(){
+		$scope.result='OK';
+	}
+	$scope.result='OK';
+	resultGiver=function(result){
+		$scope.result=result;
+		console.log($scope.result);
 	}
 	$scope.handleCheck=function(){
-		let result=customHttpService.handleCheck(cfid);
-		if(result!="OK")
-			$scope.dialogVisibilityToggler();
+		customHttpService.handleCheck($scope.cfid,resultGiver);
 	}
 	$scope.closeBox=function(event){
 		$scope.isOpen=!$scope.isOpen;
@@ -18,4 +20,4 @@ angular.module('pcpHome',['dataRetrieval'])
 	$scope.openBox=function(){
 		$scope.isOpen=!$scope.isOpen;
 	}
-}]);
+});

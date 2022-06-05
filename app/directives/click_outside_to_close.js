@@ -1,4 +1,4 @@
-angular.module('clickOutsideToClose',['pcpHome'])
+angular.module('clickOutsideToClose',[])
 .directive('onOutsideClick',function($document){
 	return{
 		restrict: 'A',
@@ -7,7 +7,7 @@ angular.module('clickOutsideToClose',['pcpHome'])
 		},
 		link: function(scope,element,attr,ctrl){
 			var handler = function(event) {
-                if (!element[0].contains(event.target)) {
+                if (angular.element(element[0]).css('visibility')=='visible' && !element[0].contains(event.target)) {
                     scope.callback(event);
                  }
             };

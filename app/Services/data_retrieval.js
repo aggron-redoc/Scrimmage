@@ -1,16 +1,18 @@
 angular.module('dataRetrieval',[])
 .service('customHttpService',['$http',function($http){
-	this.handleCheck=function(handle){
+	this.handleCheck=function(handle,callBack){
 		let url = 'https://codeforces.com/api/user.info?handles='+handle;
-		let resjson={};
-		let retval='';
 		$http.get(url)
-		.then(function found(response){
-			resjson=response.data;
-			retval=resjson["status"];
-		}, function notFound(response){
-			retval='FAILED';
+		.then(function (response){
+			if(response.status==200)
+			{
+				callBack(response.data["status"]);
+			}
+		}, function (response){
+			if(response.status==400)
+			{
+					callBack("");
+			}
 		});
-		return retval;
 	};
 }]);

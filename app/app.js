@@ -1,1 +1,1 @@
-angular.module('navigator',['ngRoute','ngAnimate','routeMaker','clickOutsideToClose','pcpHome','dataRetrieval']);
+angular.module('navigator',['ngRoute','ngAnimate','routeMaker','clickOutsideToClose','dataRetrieval','pcpHome']);
