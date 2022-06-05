@@ -1,6 +1,18 @@
-angular.module('pcpHome',[])
-.controller('pcpHomeController',function($scope, $window){
+angular.module('pcpHome',['dataRetrieval'])
+.controller('pcpHomeController',function($scope, $window, customHttpService){
 	$scope.isOpen=false;
+	$scope.cfid='';
+	$scope.resultToggler=function(){
+		$scope.result='OK';
+	}
+	$scope.result='OK';
+	resultGiver=function(result){
+		$scope.result=result;
+		console.log($scope.result);
+	}
+	$scope.handleCheck=function(){
+		customHttpService.handleCheck($scope.cfid,resultGiver);
+	}
 	$scope.closeBox=function(event){
 		$scope.isOpen=!$scope.isOpen;
 		$scope.$apply();

@@ -42,16 +42,16 @@
 			</div>
 			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen}' on-outside-click='closeBox'>
 				<h3 class="heading" align="center">Room Lead Details</h3>
-				<form class="pgateway" action="welcome.html" onsubmit="validatecfid(this);return false;">
+				<form class="pgateway" ng-submit="handleCheck()">
 					<input class="username" type="text" placeholder="Username">
 					<br>
-					<input class="cfid" type="text" placeholder="Codeforces ID" onfocus="document.getElementById('validation_message').className='invisible'">
+					<input class="cfid" ng-model='cfid' type="text" placeholder="Codeforces ID" ng-focus="resultToggler()">
 					<br>
 					<input class="intocontest" type="submit" value="Start">
 				</form>
-				<p id='validation_message' class='invisible'><i>*Codeforces ID not found</i></p>
+				<p id='validation_message' ng-class='{visible:(result=="")}' class='invisible'><i>*Codeforces ID not found</i></p>
 			</div>
-			<div class="content" ng-class="{createRoomPicHalf:isOpen}">
+			<div class="content" ng-class="{createRoomContent:isOpen}">
 				<div class="appname">
 					<img align="left" src="./Resources/images/pageicon.svg">
 					<h2 align="left"> Scrimmage </h2>
@@ -65,7 +65,7 @@ your friends at your
 own comfort!</pre>
 				<div class="wrapper">
   					<div class="link_wrapper">
-    						<a ng-click='openBox'>Create a Room!</a>
+    						<a ng-click='openBox()'>Create a Room!</a>
     						<div class="icon">
       						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
         							<path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
@@ -80,27 +80,5 @@ own comfort!</pre>
 				</div>
 			</div>
 		</div>
-		<script type='text/javascript'>
-			async function getUser(val)
-			{
-				let url = 'https://codeforces.com/api/user.info?handles='+val;
-				try {
-						let res = await fetch(url);
-						return await res.json();
-					} catch (error) {
-							console.log('hello');
-									}
-			}
-			async function validatecfid(element)
-			{
-				cfidelement=document.getElementsByClassName('cfid')[0];
-				val=cfidelement.value;
-				result=await getUser(val);
-				if(result["status"]=='OK')
-					element.submit();
-				else
-					document.getElementById('validation_message').className='visible';
-			}
-		</script>
 	</body>
 </html>
