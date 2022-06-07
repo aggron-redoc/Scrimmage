@@ -257,11 +257,15 @@ input
 	visibility: hidden;
 }
 .visible{
+	color: coral;
 	visibility: visible;
 }
-#validation_message{
-	color: coral;
+#validation_message_cfid{
 	position: relative;
 	top: -4rem;
+	left: -4rem;
+}
+#validation_message_username{
+	position: relative;
 	left: -4rem;
 }

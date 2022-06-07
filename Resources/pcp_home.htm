@@ -42,14 +42,15 @@
 			</div>
 			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen}' on-outside-click='closeBox'>
 				<h3 class="heading" align="center">Room Lead Details</h3>
-				<form class="pgateway" ng-submit="handleCheck()">
-					<input class="username" type="text" placeholder="Username">
+				<form class="pgateway">
+					<input class="username" type="text" placeholder="Username" ng-model='username' ng-focus="usernameResult=''">
 					<br>
 					<input class="cfid" ng-model='cfid' type="text" placeholder="Codeforces ID" ng-focus="resultToggler()">
 					<br>
-					<input class="intocontest" type="submit" value="Start">
+					<input class="intocontest" type="submit" ng-click='authenticate()' value="Start">
 				</form>
-				<p id='validation_message' ng-class='{visible:(result=="")}' class='invisible'><i>*Codeforces ID not found</i></p>
+				<p id='validation_message_cfid' ng-class='{visible:(result=="")}' class='invisible'><i>*Codeforces ID not found</i></p>
+				<p id='validation_message_username' ng-class='{visible:(usernameResult!="")}' class='invisible'><i>*Another Room Lead has the same name</i></p>
 			</div>
 			<div class="content" ng-class="{createRoomContent:isOpen}">
 				<div class="appname">
