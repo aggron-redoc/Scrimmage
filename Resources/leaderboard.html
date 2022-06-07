@@ -56,6 +56,12 @@
 					<th> Codeforces ID </th>
 					<th> No. of Problems </th>
 				</tr>
+				<tr ng-repeat='x in result|orderBy: nop'>
+					<td> {{$index}} </td>
+					<td> {{result.userName}} </td>
+					<td> {{result.codeforcesID}} </td>
+					<td> {{result.nop}} </td>
+				</tr>
 			</table>
 		</div>
 	</body>

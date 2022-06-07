@@ -136,7 +136,7 @@
 				<div class="room_link">
 					<div class="tooltiptext">Click the copy button to copy the link and share it with your friends</div>
 					<img src="./Resources/images/copy_image.svg" onclick="copytoclipboard()">
-					<input id="room_link_val" type="text" value="127.0.0.1/8000" readonly>
+					<input id="room_link_val" type="text" ng-model="url" readonly>
 				</div>
 				<pre class="description">
 welcome();
@@ -157,10 +157,7 @@ while(inroom)
   					</div>
 
 				</div>
-				<div class="powby">
-					<h3>Powered by</h3>
-					<a class="codeforces" href="https://codeforces.com/"><img class="cflink" src="./Resources/images/code-forces.svg"></a>
-				</div>
+				<codeforces-link></codeforces-link>
 			</div>
 		</div>
 		<script>

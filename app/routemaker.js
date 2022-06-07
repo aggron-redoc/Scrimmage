@@ -1,4 +1,4 @@
-angular.module('routeMaker',['ngRoute','pcpHome'])
+angular.module('routeMaker',['ngRoute','pcpHome','participantGateway','welcomeRoomLead'])
 .config(function($routeProvider)
 {
 	$routeProvider
@@ -7,10 +7,12 @@ angular.module('routeMaker',['ngRoute','pcpHome'])
 		controller  : "pcpHomeController"
 	})
 	.when("/:roomLead",{
-		templateUrl : "./Resources/participant_gateway.html"
+		templateUrl : "./Resources/participant_gateway.html",
+		controller : "participantGatewayController"
 	})
 	.when("/:roomLead/:participant",{
-		templateUrl: "./Resources/welcome.html"
+		templateUrl: "./Resources/welcome.html",
+		controller: "welcomeRoomLeadController"
 	})
 	.when("/:roomLead/:participant/contest",{
 		templateUrl: "./Resources/start_contest.html"
