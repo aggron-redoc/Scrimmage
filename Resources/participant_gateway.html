@@ -28,14 +28,15 @@
 			</div>
 			<div class="IntoTheRoom">
 				<h3 class="heading" align="center">Participant Gateway</h3>
-				<form class="pgateway" action="welcome.html" onsubmit="validatecfid(this);return false;">
-					<input class="username" type="text" placeholder="Username">
+				<form class="pgateway">
+					<input class="username" type="text" placeholder="Username" ng-model='username' ng-focus="usernameResult=''">
 					<br>
-					<input class="cfid" type="text" placeholder="Codeforces ID" onfocus="document.getElementById('validation_message').className='invisible'">
+					<input class="cfid" ng-model='cfid' type="text" placeholder="Codeforces ID" ng-focus="resultToggler()">
 					<br>
-					<input class="intocontest" type="submit" value="Start">
+					<input class="intocontest" type="submit" ng-click='authenticate()' value="Start">
 				</form>
-				<p id='validation_message' class='invisible'><i>*Codeforces ID not found</i></p>
+				<p id='validation_message_cfid' ng-class='{visible:(result=="")}' class='invisible'><i>*Codeforces ID not found</i></p>
+				<p id='validation_message_username' ng-class='{visible:(usernameResult!="")}' class='invisible'><i>*Another Room Lead has the same name</i></p>
 			</div>
 			<div class="content">
 				<div class="appname">

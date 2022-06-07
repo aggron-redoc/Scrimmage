@@ -1,5 +1,5 @@
-angular.module('pcpHome',['dataRetrieval'])
-.controller('pcpHomeController',function($scope, $window, $location,$q,customHttpService){
+angular.module('participantGateway',['dataRetrieval'])
+.controller('participantGatewayController',function($scope, $window, $location,$q,$routeParams,customHttpService){
 	$scope.isOpen=false;
 	$scope.cfid='';
 	$scope.resultToggler=function(){
@@ -27,7 +27,7 @@ angular.module('pcpHome',['dataRetrieval'])
 		let promise2=customHttpService.dataGather('http://127.0.0.1:3000/'+$scope.username,usernameFind);
 		$q.all([promise1,promise2]).then(function(){
 			if($scope.usernameResult=='' && $scope.result=='OK')
-				 $location.path('/'+$scope.username+'/' + $scope.username);
+				 $location.path('/' + $routeParams.roomLead + '/' + $scope.username);
 		});
 	};
 });
