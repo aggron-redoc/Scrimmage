@@ -97,11 +97,29 @@
 			left: 77.5%;
 			min-height: 25rem;
 		}
-		ol{
+		ol,ul{
 			top: -2rem;
 			line-height: 2.5;
 			max-height: 25rem;
 			overflow-y: scroll;
+		}
+		.ul{
+			opacity: 0;
+			transition: all 0.3s;
+		}
+		#Questions{
+			max-height: 25rem;
+			min-height: 25rem;
+			overflow-y: scroll;
+		}
+		.username{
+			width: 50%;
+		}
+		.cfid{
+			width: 50%;
+		}
+		.intocontest{
+			width: 25%;
 		}
 	</style>
 	<body>
@@ -109,14 +127,17 @@
 			<div class="pichalf" id="ParticipantListButton" align="right" onclick="ViewParticipantList()">
 				<img src="./Resources/images/background_side.png">
 			</div>
-			<div class="IntoTheRoom">
-				<h3 class="heading" align="center">Room Lead Details</h3>
-				<form class="pgateway" action="welcome.html">
-					<input class="username" type="text" placeholder="Username">
+			<div class="IntoTheRoom" id='Questions'>
+				<h3 class="heading" align="center">Contest Details</h3>
+				<form class="pgateway">
+					<input class="username" type="number" placeholder="Time(in mins)" ng-model='time'>
+					<input class="cfid" type="text" placeholder="No. of questions" ng-model='noq'>
 					<br>
-					<input class="cfid" type="text" placeholder="Codeforces ID">
-					<br>
-					<input class="intocontest" type="submit" value="Start">
+					<input class="intocontest" type="submit" value="Set" ng-click='set=!set'>
+					<ul ng-hide='set'>
+						<li ng-repeat='x in [].constructor(noq) track by $index'>
+						</li>
+					</ul>
 				</form>
 			</div>
 			<div class="IntoTheRoom" id='ParticipantListView'>

@@ -1,4 +1,4 @@
-angular.module('welcomeRoomLead',[])
+angular.module('welcomeRoomLead',['ngAnimate'])
 .controller('welcomeRoomLeadController',function($scope,$location, $routeParams){
 	var t=function(){
 		l=$location.absUrl();
@@ -6,4 +6,5 @@ angular.module('welcomeRoomLead',[])
 		return l;
 	}
 	$scope.url=t();
+	$scope.set=false;
 });
