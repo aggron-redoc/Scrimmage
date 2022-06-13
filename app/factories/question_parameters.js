@@ -1,13 +1,13 @@
 angular.module('questionParameters',[])
 .factory('getQuestionParameters',function(){
+	singlejson=function(){
+		this.tags=[];
+		this.difficulty=[];
+	};
 	parameters=function(howManyQuestions){
-		singlejson={
-			'tags':'',
-			'difficulty':[]
-		};
 		allQuestionData=[];
 		for(var i=1;i<=howManyQuestions;i++)
-			allQuestionData.push(singlejson);
+			allQuestionData.push(new singlejson);
 		return allQuestionData;
 	};
 	return {parameters};

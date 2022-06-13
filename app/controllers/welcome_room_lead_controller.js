@@ -22,17 +22,36 @@ angular.module('welcomeRoomLead',['ngAnimate','codeforcesTags','questionParamete
 	};
 	$scope.url=t();
 	$scope.set=false;
-	$scope.questionData='';
+	$scope.questionData={};
 	$scope.noq='';
 	$scope.time='';
-	$scope.selectedTags=[];
 	$scope.selectedTag='';
 	$scope.totalTags=getCodeforcesTags.tags;
 	$scope.readyState=false;
-	$scope.addToSelected=function(){};
+	$scope.addToSelected=function(x,y)
+	{
+		console.log(y);
+		if(x.length!=0 && !y.includes(x))
+		{
+				y.push(x);
+				console.log(y);
+		}
+	};
+	$scope.removeFromQuestionData=function(x,y)
+	{
+		// console.log(x);
+		// console.log(y);
+		y.splice(y.indexOf(x,1),1);
+		// console.log(y);
+		console.log($scope.questionData);
+	}
 	$scope.startContest=function(){};
 	$scope.setQuestionData=function(){
-		$scope.set=true;
-		$scope.questionData=getQuestionParameters.parameters($scope.noq);
+		if($scope.time!='' && $scope.time!=0 && $scope.noq!='' && $scope.noq!=0)
+		{
+			$scope.set=true;
+			$scope.questionData=getQuestionParameters.parameters($scope.noq);
+			console.log($scope.questionData[0]==$scope.questionData[1]);
+		}
 	}
 });

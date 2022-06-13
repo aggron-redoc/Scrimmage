@@ -216,7 +216,7 @@ a:hover + .icon{
 	padding-left: 1%;
 }
 
-input
+input,select
 {
 	border-radius: 15px;
 	height: 50px;
@@ -225,6 +225,11 @@ input
 	left: 50%;
 	transform: translate(-50%,0%);
 	font-family: titlename;
+}
+
+button{
+	font-family: titlename;
+	border-radius: 15px;
 }
 
 .IntoTheRoom h3{
@@ -268,4 +273,15 @@ input
 #validation_message_username{
 	position: relative;
 	left: -4rem;
+}
+.no_vertical{
+	display: inline;
+}
+.tagStyle{
+	transition: all .35s;
+}
+.tagStyle:hover{
+	background-color: black;
+	color: white;
+	cursor: pointer;
 }
