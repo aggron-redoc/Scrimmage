@@ -19,7 +19,7 @@
 			filter: blur(0px);
 			transition: all 0.05s;
 			transition-timing-function: linear;
-			
+
 		  }
 	    .description{
 			line-height: 1.5;
@@ -122,33 +122,73 @@
 		.intocontest{
 			width: 25%;
 		}
+		.faded{
+			pointer-events: none;
+			color: pink;
+			opacity: 0.6;
+		}
+		.createRoomIntoTheRoom{
+			visibility: visible;
+			opacity: 1;
+		}
+		.createRoomContent{
+			filter: blur(4px);
+			pointer-events: none;
+		}
+		.createRoomPicHalf{
+			filter: blur(6px);
+			pointer-events: none;
+		}
 	</style>
 	<body>
 		<div class="root_container">
-			<div class="pichalf" id="ParticipantListButton" align="right" onclick="ViewParticipantList()">
+			<div class="pichalf" id="ParticipantListButton" align="right" ng-class="{createRoomPicHalf:isOpen || isOpen2}" ng-click="openBox2()">
 				<img src="./Resources/images/background_side.png">
 			</div>
-			<div class="IntoTheRoom" id='Questions'>
+			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen}' on-outside-click='closeBox' id='Questions'>
 				<h3 class="heading" align="center">Contest Details</h3>
 				<form class="pgateway">
 					<input class="username" type="number" placeholder="Time(in mins)" ng-model='time'>
 					<input class="cfid" type="text" placeholder="No. of questions" ng-model='noq'>
 					<br>
-					<input class="intocontest" type="submit" value="Set" ng-click='set=!set'>
-					<ul ng-hide='set'>
-						<li ng-repeat='x in [].constructor(noq) track by $index'>
+					<input class="intocontest" type="submit" value="Set" ng-click='setQuestionData()'>
+					<br>
+					<ul ng-show='set'>
+						<li ng-repeat='x in questionData track by $index'>
+							<h4 class="heading">Question {{$index+1}}</h4>
+							<div class='tagShow'>
+								<ul>
+									<li ng-repeat='x in selectedTags track by $index'>
+										<button class='tagStyle' ng-click='clickOnClose($index)'>
+									</li>
+								</ul>
+							</div>
+							<br>
+							<select class='username tagSelect' ng-model='selectedTag' ng-click='addToSelected(selectedTag)'>
+								<option ng-repeat='x in totalTags' value={{x}}>{{x}}</option>
+							</select>
+							<br>
+							<input type='number' class='username' ng-model='x.difficulty[0]' placeholder="Min difficulty"> -
+							<input type='number' class='username' ng-model='x.difficulty[1]' placeholder="Max difficulty">
+							<br>
+							<hr>
+						</li>
+						<li>
+							<h4>Ready:</h4> <input type='checkbox' class='readyDialog' ng-model='readyState'>
+							<br>
+							<input class='intocontest' ng-class={faded:!readyState} type='submit' value='Aarambikkangala' ng-click='startContest()'>
 						</li>
 					</ul>
 				</form>
 			</div>
-			<div class="IntoTheRoom" id='ParticipantListView'>
+			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen2}' on-outside-click='closeBox2' id='ParticipantListView'>
 				<h3 class="heading" align="center">Participant List</h3>
 				<ol>
 					<li> Aggronfdgdfgfdgfdgfdgdf </li>
 					<li> Aron </li>
 				</ol>
 			</div>
-			<div class="content">
+			<div class="content" ng-class="{createRoomContent:isOpen || isOpen2}">
 				<div class="appname">
 					<img align="left" src="./Resources/images/pageicon.svg">
 					<h2 align="left"> Scrimmage </h2>
@@ -170,7 +210,7 @@ while(inroom)
 }</pre>
 				<div class="wrapper">
   					<div class="link_wrapper">
-    						<a onclick="createroom()">Contest(time,problems)</a>
+    						<a ng-click='openBox()'>Contest(time,problems)</a>
     						<div class="icon">
       						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
         							<path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
@@ -183,28 +223,6 @@ while(inroom)
 			</div>
 		</div>
 		<script>
-			function createroom()
-			{
-				document.getElementsByClassName('content')[0].style.filter="blur(4px)";
-				document.getElementsByClassName('pichalf')[0].style.filter="blur(6px)";
-				document.getElementsByClassName('content')[0].style.pointerEvents="none";
-				document.getElementsByClassName('pichalf')[0].style.pointerEvents="none";
-				document.getElementsByClassName('IntoTheRoom')[0].style.visibility="visible";
-				document.getElementsByClassName('IntoTheRoom')[0].style.opacity="1";
-			}
-			document.addEventListener('mouseup', function(e) {
-   						 	var container = document.getElementsByClassName('IntoTheRoom')[0];
-							var container2 = document.getElementsByClassName('content')[0];
-							var container3 = document.getElementsByClassName('pichalf')[0];
-    							if (!container.contains(e.target)) {
-        								container.style.visibility = 'hidden';
-									container.style.opacity = '0';
-									container2.style.filter="blur(0px)";
-									container2.style.pointerEvents="all";
-									container3.style.pointerEvents="all";
-									container3.style.filter="blur(0px)";
-    							}
-			});
 			document.addEventListener("mouseout", function(e){
 				if (!document.getElementsByClassName('tooltiptext')[0].contains(e.target))
 				   document.getElementsByClassName('tooltiptext')[0].innerHTML="Click the copy button to copy the link and share it with your friends";
@@ -216,28 +234,6 @@ while(inroom)
 				  navigator.clipboard.writeText(copyText.value);
 				 document.getElementsByClassName('tooltiptext')[0].innerHTML="Copied to clipboard";
 			  }
-			  function ViewParticipantList()
-			  {
-				document.getElementsByClassName('pichalf')[0].style.visibility="hidden";
-  				document.getElementsByClassName('pichalf')[0].style.filter="blur(6px)";
-  				document.getElementsByClassName('content')[0].style.pointerEvents="none";
-  				document.getElementsByClassName('IntoTheRoom')[1].style.visibility="visible";
-  				document.getElementsByClassName('IntoTheRoom')[1].style.opacity="1";
-			  }
-			  document.addEventListener('mouseup', function(e) {
-     						 	var container = document.getElementsByClassName('IntoTheRoom')[1];
-  							var container2 = document.getElementsByClassName('content')[0];
-  							var container3 = document.getElementsByClassName('pichalf')[0];
-      							if (!container.contains(e.target) && container.style.visibility=='visible') {
-          							container.style.visibility = 'hidden';
-  									container.style.opacity = '0';
-  									container2.style.filter="blur(0px)";
-  									container2.style.pointerEvents="all";
-									container3.style.pointerEvents="all";
-  									container3.style.filter="blur(0px)";
-									container3.style.visibility="visible";
-      							}
-  			});
 		</script>
 	</body>
 </html>

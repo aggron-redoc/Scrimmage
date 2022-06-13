@@ -1,1 +1,1 @@
-angular.module('navigator',['ngRoute','ngAnimate','routeMaker','clickOutsideToClose','dataRetrieval','codeforcesComponent','pcpHome']);
+angular.module('navigator',['ngRoute','ngAnimate','routeMaker','codeforcesTags','questionParameters','clickOutsideToClose','dataRetrieval','codeforcesComponent','pcpHome']);
