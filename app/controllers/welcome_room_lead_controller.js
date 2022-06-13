@@ -34,16 +34,16 @@ angular.module('welcomeRoomLead',['ngAnimate','codeforcesTags','questionParamete
 		if(x.length!=0 && !y.includes(x))
 		{
 				y.push(x);
-				console.log(y);
+				//console.log(y);
 		}
 	};
 	$scope.removeFromQuestionData=function(x,y)
 	{
 		// console.log(x);
 		// console.log(y);
-		y.splice(y.indexOf(x,1),1);
+		y.splice(y.indexOf(x),1);
 		// console.log(y);
-		console.log($scope.questionData);
+		//console.log($scope.questionData);
 	}
 	$scope.startContest=function(){};
 	$scope.setQuestionData=function(){
@@ -51,7 +51,7 @@ angular.module('welcomeRoomLead',['ngAnimate','codeforcesTags','questionParamete
 		{
 			$scope.set=true;
 			$scope.questionData=getQuestionParameters.parameters($scope.noq);
-			console.log($scope.questionData[0]==$scope.questionData[1]);
+			//console.log($scope.questionData[0]==$scope.questionData[1]);
 		}
 	}
 });

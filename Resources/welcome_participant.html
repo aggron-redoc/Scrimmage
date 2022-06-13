@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+  		<meta name="description" content="Private CP competitions">
+  		<meta name="keywords" content="CP, Private, Codeforces, Scrimmage">
+  		<meta name="author" content="aggron2002">
+		<title>
+			Scrimmage - IntoTheRoom
+		</title>
+	</head>
+	<style>
+	.IntoTheRoom{
+		transition:visibility 0.25s, opacity 0.25s;
+			visibility:hidden; opacity:0;
+			transition-timing-function: linear;
+			}
+	.content, .pichalf {
+			filter: blur(0px);
+			transition: all 0.05s;
+			transition-timing-function: linear;
+
+		  }
+	    .description{
+			line-height: 1.5;
+			font-family: forcode;
+			font-style: normal;
+		}
+		.wrapper{
+			font-size: 80%;
+			font-family: forcode;
+		}
+		a:hover + .icon {
+			right: 4.5%;
+		}
+		.room_link img{
+			position: relative;
+			float:right;
+			height: 40%;
+			width: 40%;
+			left: 12%;
+		}
+		.room_link img:hover{
+			filter: opacity(1) drop-shadow(0 0 0 black);
+		}
+		.room_link{
+			background-color: #f5f5f5;
+			height: 40px;
+			position: relative;
+			top: -35px;
+			left: 25%;
+			transform: translate(-10%,0%);
+			border-radius: 10px;
+		}
+		.room_link .tooltiptext {
+		  visibility: hidden;
+		  background-color: black;
+		  color: #fff;
+		  text-align: justify;
+		  border-radius: 6px;
+		  padding: 3%;
+		  font-family: roundededges;
+		  /* Position the tooltip */
+		  position: fixed;
+		  z-index: 1;
+		  opacity: 0;
+  		  transition: top 0.5s;
+		  top: 500px;
+		  left: -100px;
+		  width: 150%;
+	    }
+
+		.room_link:hover .tooltiptext {
+				top: 475px;
+  				visibility: visible;
+				opacity: 1;
+			}
+		#room_link_val{
+			width: 80%;
+			height: 50%;
+			border: none;
+			position: relative;
+			text-align: center;
+			left: 50%;
+			background-color: #f5f5f5;
+			border-radius: 0px;
+			pointer-events: none;
+		}
+		#ParticipantListButton{
+			transition: all 0.35s;
+			cursor: pointer;
+		}
+		#ParticipantListButton:hover{
+			transform: scale(-1,1.1);
+		}
+		#ParticipantListView{
+			position: absolute;
+			left: 77.5%;
+			min-height: 25rem;
+		}
+		ol,ul{
+			top: -2rem;
+			line-height: 2.5;
+			max-height: 25rem;
+			overflow-y: scroll;
+		}
+		.ul{
+			opacity: 0;
+			transition: all 0.3s;
+		}
+		#Questions{
+			max-height: 15rem;
+			min-height: 15rem;
+			overflow-y: scroll;
+		}
+		.username{
+			width: 50%;
+		}
+		.cfid{
+			width: 50%;
+		}
+		#setQuestions{
+			width: 25%;
+		}
+		.faded{
+			pointer-events: none;
+			color: pink;
+			opacity: 0.6;
+		}
+		.createRoomIntoTheRoom{
+			visibility: visible;
+			opacity: 1;
+		}
+		.createRoomContent{
+			filter: blur(4px);
+			pointer-events: none;
+		}
+		.createRoomPicHalf{
+			filter: blur(6px);
+			pointer-events: none;
+		}
+		.pgateway ul{
+			overflow-x: hidden;
+		}
+		.readyDialog{
+			position: relative;
+			height: 25px;
+			transform: translate(-75%,-230%)
+		}
+	</style>
+	<body>
+		<div class="root_container">
+			<div class="pichalf" id="ParticipantListButton" align="right" ng-class="{createRoomPicHalf:isOpen || isOpen2}" ng-click="openBox2()">
+				<img src="./Resources/images/background_side.png">
+			</div>
+			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen}' on-outside-click='closeBox' id='Questions'>
+				<h3 class="heading" align="center">Contest Details</h3>
+				<form class="pgateway">
+					<h4>Ready:</h4> <input type='checkbox' class='readyDialog' ng-model='readyState'>
+					<br>
+					<input class='intocontest' ng-class={faded:!readyState} type='submit' value='Aarambikkangala' ng-click='startContest()'>
+				</form>
+			</div>
+			<div class="IntoTheRoom" ng-class='{createRoomIntoTheRoom:isOpen2}' on-outside-click='closeBox2' id='ParticipantListView'>
+				<h3 class="heading" align="center">Participant List</h3>
+				<ol>
+					<li> Aggronfdgdfgfdgfdgfdgdf </li>
+					<li> Aron </li>
+				</ol>
+			</div>
+			<div class="content" ng-class="{createRoomContent:isOpen || isOpen2}">
+				<div class="appname">
+					<img align="left" src="./Resources/images/pageicon.svg">
+					<h2 align="left"> Scrimmage </h2>
+					<h3 align="right" class="tagline"><i> - Level Up with your friends!  </i></h3>
+				</div>
+				<br>
+				<div class="room_link">
+					<div class="tooltiptext">Click the copy button to copy the link and share it with your friends</div>
+					<img src="./Resources/images/copy_image.svg" onclick="copytoclipboard()">
+					<input id="room_link_val" type="text" ng-model="url" readonly>
+				</div>
+				<pre class="description">
+welcome();
+while(inroom)
+{
+  think();
+  code();
+  debug();
+}</pre>
+				<div class="wrapper">
+  					<div class="link_wrapper">
+    						<a ng-click='openBox()'>Contest(time,problems)</a>
+    						<div class="icon">
+      						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+        							<path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
+      						</svg>
+    						</div>
+  					</div>
+
+				</div>
+				<codeforces-link></codeforces-link>
+			</div>
+		</div>
+		<script>
+			document.addEventListener("mouseout", function(e){
+				if (!document.getElementsByClassName('tooltiptext')[0].contains(e.target))
+				   document.getElementsByClassName('tooltiptext')[0].innerHTML="Click the copy button to copy the link and share it with your friends";
+			});
+			function copytoclipboard() {
+				  var copyText = document.getElementById("room_link_val");
+				  copyText.select();
+				  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+				  navigator.clipboard.writeText(copyText.value);
+				 document.getElementsByClassName('tooltiptext')[0].innerHTML="Copied to clipboard";
+			  }
+		</script>
+	</body>
+</html>

@@ -27,7 +27,7 @@ angular.module('participantGateway',['dataRetrieval'])
 		let promise2=customHttpService.dataGather('http://127.0.0.1:3000/'+$scope.username,usernameFind);
 		$q.all([promise1,promise2]).then(function(){
 			if($scope.usernameResult=='' && $scope.result=='OK')
-				 $location.path('/' + $routeParams.roomLead + '/' + $scope.username);
+				 $location.path('/' + $routeParams.roomLead + '/' + $scope.username + '/' + 'pmode');
 		});
 	};
 });

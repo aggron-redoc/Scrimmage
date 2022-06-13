@@ -11,7 +11,11 @@ angular.module('routeMaker',['ngRoute','pcpHome','participantGateway','welcomeRo
 		controller : "participantGatewayController"
 	})
 	.when("/:roomLead/:participant",{
-		templateUrl: "./Resources/welcome.html",
+		templateUrl: "./Resources/welcome_room_lead.html",
+		controller: "welcomeRoomLeadController"
+	})
+	.when("/:roomLead/:participant/pmode",{
+		templateUrl: "./Resources/welcome_participant.html",
 		controller: "welcomeRoomLeadController"
 	})
 	.when("/:roomLead/:participant/contest",{
